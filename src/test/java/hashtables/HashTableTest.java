@@ -26,11 +26,11 @@ class HashTableTest {
         ht.put(1,1);
         ht.put(2,2);
         Assertions.assertEquals(ht.get(1), 1);
-        Assertions.assertEquals(ht.get(3), -1);
+        Assertions.assertEquals(ht.get(3), Integer.MIN_VALUE);
         ht.put(2,1);
         Assertions.assertEquals(ht.get(2), 1);
         ht.remove(2);
-        Assertions.assertEquals(ht.get(2), -1);
+        Assertions.assertEquals(ht.get(2), Integer.MIN_VALUE);
     }
 
 }
