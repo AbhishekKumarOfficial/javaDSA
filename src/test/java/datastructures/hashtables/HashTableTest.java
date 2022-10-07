@@ -1,5 +1,6 @@
-package hashtables;
+package datastructures.hashtables;
 
+import datastructures.hashtables.HashTable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
