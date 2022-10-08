@@ -90,4 +90,60 @@ class BinarySearchTreeTest {
         bst.insert(10);
         Assertions.assertEquals(bst.height(), 2);
     }
+
+    @Test
+    public void deleteNodeWithBothChildTest() {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.insert(7);
+        bst.insert(4);
+        bst.insert(9);
+        bst.insert(1);
+        bst.insert(6);
+        bst.insert(8);
+        bst.insert(10);
+        bst.deleteNode(9);
+        bst.inOrderTraversal();
+        Assertions.assertEquals("1 4 6 7 8 10", outputStreamCaptor.toString().trim());
+    }
+    @Test
+    public void deleteNodeWithLeftChildTest() {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.insert(7);
+        bst.insert(4);
+        bst.insert(9);
+        bst.insert(1);
+        bst.insert(6);
+        bst.insert(8);
+        bst.deleteNode(9);
+        bst.inOrderTraversal();
+        Assertions.assertEquals("1 4 6 7 8", outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    public void deleteNodeWithRightChildTest() {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.insert(7);
+        bst.insert(4);
+        bst.insert(9);
+        bst.insert(1);
+        bst.insert(6);
+        bst.insert(10);
+        bst.deleteNode(9);
+        bst.inOrderTraversal();
+        Assertions.assertEquals("1 4 6 7 10", outputStreamCaptor.toString().trim());
+    }
+    @Test
+    public void deleteNodeWithNoChildTest() {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.insert(7);
+        bst.insert(4);
+        bst.insert(9);
+        bst.insert(1);
+        bst.insert(6);
+        bst.insert(8);
+        bst.insert(10);
+        bst.deleteNode(6);
+        bst.inOrderTraversal();
+        Assertions.assertEquals("1 4 7 8 9 10", outputStreamCaptor.toString().trim());
+    }
 }

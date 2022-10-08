@@ -44,6 +44,42 @@ public class BinarySearchTree {
         }
     }
 
+    public void deleteNode(int value) {
+        root = deleteNode(root, value);
+    }
+
+    private Node deleteNode(Node root, int value) {
+        if (root == null)
+            return null;
+        if (value < root.value)
+            root.leftChild = deleteNode(root.leftChild, value);
+        else if (value > root.value)
+            root.rightChild = deleteNode(root.rightChild, value);
+        else {
+            if (root.leftChild != null && root.rightChild != null) {
+                Node inOrderSuccessor = minimumElement(root.rightChild);
+                root.value = inOrderSuccessor.value;
+                root.rightChild = deleteNode(root.rightChild, inOrderSuccessor.value);
+            }
+            else if (root.leftChild != null) {
+                root = root.leftChild;
+            }
+            else if (root.rightChild != null) {
+                root = root.rightChild;
+            }
+            else
+                root = null;
+        }
+        return  root;
+    }
+
+    private Node minimumElement(Node root) {
+        if (root.leftChild == null)
+            return root;
+        else
+            return minimumElement(root.leftChild);
+    }
+
     public boolean find(int value) {
         var current = root;
         while (current != null) {
