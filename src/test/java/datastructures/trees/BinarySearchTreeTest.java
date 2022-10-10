@@ -78,6 +78,20 @@ class BinarySearchTreeTest {
     }
 
     @Test
+    public void levelOrderTraversalTest() {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.insert(7);
+        bst.insert(4);
+        bst.insert(9);
+        bst.insert(1);
+        bst.insert(6);
+        bst.insert(8);
+        bst.insert(10);
+        bst.levelOrderTraversal();
+        Assertions.assertEquals("7 4 9 1 6 8 10", outputStreamCaptor.toString().trim());
+    }
+
+    @Test
     public void heightTest() {
         BinarySearchTree bst = new BinarySearchTree();
         Assertions.assertEquals(bst.height(), -1);

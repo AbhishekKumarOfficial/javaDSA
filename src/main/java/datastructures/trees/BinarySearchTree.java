@@ -1,5 +1,8 @@
 package datastructures.trees;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinarySearchTree {
     private class Node {
         private int value;
@@ -129,6 +132,25 @@ public class BinarySearchTree {
         System.out.print(root.value + " " );
     }
 
+    public void levelOrderTraversal() {
+        levelOrderTraversal(root);
+    }
+
+    private void levelOrderTraversal(Node root) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()) {
+            Node cur = queue.poll();
+            System.out.print(cur.value + " ");
+
+            if (cur.leftChild != null)
+                queue.offer(cur.leftChild);
+
+            if (cur.rightChild != null)
+                queue.offer(cur.rightChild);
+        }
+    }
+
     public int height() {
         return height(root);
     }
@@ -140,5 +162,4 @@ public class BinarySearchTree {
             return 0;
         return 1 + Math.max(height(root.leftChild), height(root.rightChild));
     }
-
 }
